@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// There are 5 that will be made
+
+//user
+
+model user {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  carts    addedProduct[]
+}
+
+// Team
+
+model Team {
+  id       Int      @id @default(autoincrement())
+  name      String
+  imageUrl String
+  projectRole String
+  instagramUrl String
+  linkedinUrl String
+  githubUrl String
+}
+
+// Category
+
+model Category {
+  id       Int      @id @default(autoincrement())
+  name      String
+  description String
+  products Product[]
+  
+}
+
+// Product
+model Product {
+  id      Int      @id @default(autoincrement())
+  productImageurl String
+  name      String
+  description String
+  price Int
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  carts    addedProduct[]
+}
+
+//addedProduct
+
+model addedProduct {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  productId Int
+  quantity  Int
+  //foreign keys
+  user      user      @relation(fields: [userId], references: [id])
+  product  Product   @relation(fields: [productId], references: [id])
+}
