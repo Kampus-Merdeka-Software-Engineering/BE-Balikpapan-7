@@ -22,6 +22,6 @@ app.use("/products", productRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/users", userRoutes);
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, "0.0.0.0", function() => {
   console.log(`Server is running on port ${PORT}`);
 });
