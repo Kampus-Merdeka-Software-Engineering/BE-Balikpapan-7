@@ -3,9 +3,9 @@ const categoryController = require("../controller/categoryController");
 const categoryRoutes = express.Router();
 
 // get all articles
-categoryRoutes.get("/", categoryController.getArticles);
+categoryRoutes.get("/", categoryController.getCategory);
 
 // get article by id
-categoryRoutes.get("/:articleId", categoryController.getArticleById);
+categoryRoutes.get("/:CategoryId", categoryController.getCategoryById);
 
 module.exports = { categoryRoutes };

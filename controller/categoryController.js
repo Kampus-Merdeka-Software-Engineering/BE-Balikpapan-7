@@ -1,12 +1,12 @@
 const categoryService = require("../service/categoryService");
 
 // get all articles in blog
-async function getArticles(req, res) {
+async function getCategory(req, res) {
   try {
-    const articles = await categoryService.getArticles();
+    const articles = await categoryService.getCategory();
     res.status(200).json({
       message: "Successfully fetched all articles in blog",
-      data: articles,
+      data: Category,
     });
   } catch (error) {
     console.error(error);
@@ -15,11 +15,11 @@ async function getArticles(req, res) {
 }
 
 // Get an article by ID
-async function getArticleById(req, res) {
-  const { articleId } = req.params;
+async function getCategoryById(req, res) {
+  const { CategoryId } = req.params;
   try {
-    const article = await categoryService.getArticleById(articleId);
-    if (!article) {
+    const Category = await categoryService.getCategoryById(CategoryId);
+    if (!Category) {
       return res.status(404).json({ error: "article not found" });
     }
     res.status(200).json({
@@ -32,6 +32,6 @@ async function getArticleById(req, res) {
   }
 }
 module.exports = {
-  getArticles,
-  getArticleById,
+  getCategory,
+  getCategoryById,
 };

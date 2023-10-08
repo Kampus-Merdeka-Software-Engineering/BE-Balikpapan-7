@@ -1,31 +1,30 @@
 const { prisma } = require("../config/prisma");
 
-//get all articles
-async function getArticles() {
+//get all Category
+async function getCategory() {
   try {
-    console.log(category);
-    const category = await prisma.article.findMany();
-    return category;
+    const Category = await prisma.Category.findMany();
+    return Category;
   } catch (error) {
     console.log(error);
   }
 }
 
-// get an article by id
-async function getArticleById(articleId) {
+// get an Category by id
+async function getCategoryById(articleId) {
   try {
-    const getArticle = await prisma.article.findUnique({
+    const getCategory = await prisma.Category.findUnique({
       where: {
-        id: Number(articleId),
+        id: Number(CategoryId),
       },
     });
-    return getArticle;
+    return getCategory;
   } catch (error) {
     throw new Error(error);
   }
 }
 
 module.exports = {
-  getArticles,
-  getArticleById,
+  getCategory,
+  getCategoryById,
 };
