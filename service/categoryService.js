@@ -3,6 +3,7 @@ const { prisma } = require("../config/prisma");
 //get all articles
 async function getArticles() {
   try {
+    console.log(category);
     const category = await prisma.article.findMany();
     return category;
   } catch (error) {
