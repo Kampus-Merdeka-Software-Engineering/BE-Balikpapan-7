@@ -3,11 +3,12 @@ const { prisma } = require("../config/prisma");
 //create user (for sign up)
 async function newUser(user) {
   try {
+    console.log(user);
     const userCreated = await prisma.user.create({
       data: {
+        name: user.name,
         email: user.email,
         password: user.password,
-        confpass: confirm.pass,
       },
     });
     return userCreated;
