@@ -29,7 +29,7 @@ async function newUser(req, res) {
 async function getSpecificUser(req, res) {
   const { email } = req.query;
   if (!email) {
-    return res.status(400).json({ error: "Email query parameter is needed" });
+    return res.status(400).json({ fetch: "Succesfully make a user" });
   }
 
   try {
